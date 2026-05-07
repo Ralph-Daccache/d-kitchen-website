@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Materials &amp; Brands - d. Kitchen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animated-divider {
+            width: 0;
+            transition: width 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .animated-divider.active {
+            width: 100%;
+        }
+
+        .parallax-text {
+            transition: letter-spacing 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        /* Material Card Hover */
+        .material-card .card-info {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        .material-card:hover .card-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .material-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Tooltip */
+        .partner-item .tooltip {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+            z-index: 10;
+        }
+        .partner-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed": "#3a0032",
+                        "on-primary-fixed-variant": "#304f00",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container": "#20201f",
+                        "primary-fixed-dim": "#9cd84f",
+                        "on-surface-variant": "#c2c9b3",
+                        "primary-fixed": "#b7f568",
+                        "outline-variant": "#424938",
+                        "on-primary-fixed": "#102000",
+                        "secondary-container": "#454747",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary": "#2f3131",
+                        "surface": "#131313",
+                        "primary-container": "#8cc63f",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#304f00",
+                        "surface-container-highest": "#353535",
+                        "surface-dim": "#131313",
+                        "tertiary-container": "#ff8ee4",
+                        "on-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#8c937f",
+                        "tertiary": "#ffbdea",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "primary": "#a6e358",
+                        "on-tertiary": "#5e0053",
+                        "surface-tint": "#9cd84f",
+                        "on-tertiary-fixed-variant": "#7c1c6e",
+                        "on-tertiary-container": "#7c1c6d",
+                        "tertiary-fixed-dim": "#fface8",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#ffd7f0",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary": "#203700",
+                        "on-error": "#690005",
+                        "inverse-primary": "#416900",
+                        "surface-variant": "#353535",
+                        "on-secondary-fixed-variant": "#454747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "unit": "8px",
+                        "section-gap": "160px",
+                        "margin-edge": "64px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<nav class="bg-surface/80 backdrop-blur-md dark:bg-surface/90 border-b border-outline-variant/20 fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-edge py-[32px]">
+<div class="font-headline-md text-headline-md text-on-surface tracking-tighter">d. Kitchen</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors" href="#">About Us</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors" href="#">Our Projects</a>
+<a class="text-primary font-bold border-b border-primary pb-1 font-label-caps text-label-caps" href="#">Materials &amp; Brands</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors" href="#">Contact Us</a>
+</div>
+<div class="hidden md:block">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 hover:bg-primary-container transition-colors duration-300">Inquire</button>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</nav>
+<main class="flex-grow pt-[160px] pb-section-gap w-full max-w-container-max mx-auto px-margin-edge overflow-hidden">
+<header class="mb-section-gap max-w-3xl reveal">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-gutter parallax-text" id="main-heading">Materials &amp; Brands</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A curated selection of the world's finest raw elements and precision hardware. Our legacy is built upon the uncompromising quality of these foundations.</p>
+</header>
+<section class="mb-section-gap reveal">
+<div class="pb-unit mb-gutter relative">
+<h2 class="font-label-caps text-label-caps text-primary">01 / The Elements</h2>
+<div class="absolute bottom-0 left-0 h-[1px] bg-primary animated-divider"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="group flex flex-col cursor-pointer material-card relative overflow-hidden">
+<div class="aspect-square bg-surface-container overflow-hidden mb-6 relative border border-outline-variant/50 group-hover:border-primary transition-colors duration-500">
+<img alt="Premium European oak wood grain texture" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApuwqyBpXhqWce53mAB3JDEnySYr2Vlw53jaZPyip4EucwKRChGQDDvm813GCqokVJD2kirTzrqu38YcA4Xa14JTtFGDDRcY1wRXW_AD6vRqf1-1CRqAx5Z0uFn0FiErrsE0Xq7n5k7oNnl_ozBsygt-sgKyW_TOcHaSR1h_yJRbxkR2iaw6l4XiPuaS69yKIOhYomgxyT3wIUSY4N2gFS9K0M14CYnDTWeM1ldz17ncc9l4vtnkWfJ3kSbr5-yM2A9aC-agqXncVM"/>
+<div class="absolute inset-0 bg-surface/80 backdrop-blur-sm flex flex-col justify-center items-center p-6 text-center card-info">
+<h4 class="font-label-caps text-primary mb-2">Technical Specs</h4>
+<ul class="text-on-surface font-body-md text-sm space-y-2">
+<li>Origin: Black Forest, Germany</li>
+<li>Density: 720 kg/m³</li>
+<li>Finish: Natural Oil, Matte</li>
+</ul>
+<span class="material-symbols-outlined mt-4 text-primary">zoom_in</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Heritage Oak</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Sourced from sustainable European forests, offering unparalleled structural integrity and a timeless, tactile warmth.</p>
+</div>
+<div class="group flex flex-col cursor-pointer material-card relative overflow-hidden">
+<div class="aspect-square bg-surface-container overflow-hidden mb-6 relative border border-outline-variant/50 group-hover:border-primary transition-colors duration-500">
+<img alt="White Calacata marble slab with dark veins" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXDYudvvGl5zjPA7pSjkh9BFMkL99Nvhd0EG8iWYKeq94eDxowAAOKY50NZ4W1_vn5rp_4W7wsKV3RwNRVwTZmrFR2DhG9jn0X0Vjs6DrMhylCnBwq0Iqr2Ts120EEAXrlNERrCc8ByC-4qfCe9UzDDXKjot7OESG_Vgn_Zc2VYJHVtQf44SZtfNfN-GJnQuvUX4LxYBi6iPauTOBXPTdUltc7lENQwAEsjRrd1sRkKpo58CIFMZIMrVEj_Cb5GWv5FW4DpVrKKFeB"/>
+<div class="absolute inset-0 bg-surface/80 backdrop-blur-sm flex flex-col justify-center items-center p-6 text-center card-info">
+<h4 class="font-label-caps text-primary mb-2">Technical Specs</h4>
+<ul class="text-on-surface font-body-md text-sm space-y-2">
+<li>Origin: Carrara, Italy</li>
+<li>Thickness: 20mm / 30mm</li>
+<li>Finish: Honed / Polished</li>
+</ul>
+<span class="material-symbols-outlined mt-4 text-primary">zoom_in</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Calacata Vagli</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Exceptional white marble defined by its dramatic, dynamic veining. A statement of pure luxury and geological artistry.</p>
+</div>
+<div class="group flex flex-col cursor-pointer material-card relative overflow-hidden">
+<div class="aspect-square bg-surface-container overflow-hidden mb-6 relative border border-outline-variant/50 group-hover:border-primary transition-colors duration-500">
+<div class="w-full h-full bg-gradient-to-br from-[#2a2a2a] to-[#111111] relative transition-transform duration-700">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-30 mix-blend-overlay"></div>
+</div>
+<div class="absolute inset-0 bg-surface/80 backdrop-blur-sm flex flex-col justify-center items-center p-6 text-center card-info">
+<h4 class="font-label-caps text-primary mb-2">Technical Specs</h4>
+<ul class="text-on-surface font-body-md text-sm space-y-2">
+<li>Material: Hot-Rolled Steel</li>
+<li>Treatment: Acid Patina</li>
+<li>Coating: Clear Matte Lacquer</li>
+</ul>
+<span class="material-symbols-outlined mt-4 text-primary">zoom_in</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Blackened Steel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Architectural grade steel treated with a bespoke patina process, resulting in a matte, deeply textured industrial finish.</p>
+</div>
+</div>
+</section>
+<section class="reveal">
+<div class="pb-unit mb-gutter relative">
+<h2 class="font-label-caps text-label-caps text-primary">02 / Engineering Partners</h2>
+<div class="absolute bottom-0 left-0 h-[1px] bg-primary animated-divider"></div>
+</div>
+<div class="flex flex-col gap-[120px]">
+<!-- Hover-Active Brand Section Marquee -->
+<div class="w-full border-y border-outline-variant/20 py-8 marquee-container bg-surface-container-low">
+<div class="marquee-content flex gap-16 items-center px-8">
+<!-- Partner 1 -->
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Blum</span>
+<div class="tooltip absolute bottom-full mb-4 w-48 p-4 bg-surface-container-highest border border-outline-variant rounded shadow-xl text-center">
+<p class="font-label-caps text-primary mb-1">Kinematic Motion</p>
+<p class="font-body-md text-sm text-on-surface">Pioneering silent, effortless drawer and hinge articulation.</p>
+</div>
+</div>
+<!-- Partner 2 -->
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Gaggenau</span>
+<div class="tooltip absolute bottom-full mb-4 w-48 p-4 bg-surface-container-highest border border-outline-variant rounded shadow-xl text-center">
+<p class="font-label-caps text-primary mb-1">Culinary Mastery</p>
+<p class="font-body-md text-sm text-on-surface">Professional-grade appliances integrated seamlessly.</p>
+</div>
+</div>
+<!-- Partner 3 -->
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Dornbracht</span>
+<div class="tooltip absolute bottom-full mb-4 w-48 p-4 bg-surface-container-highest border border-outline-variant rounded shadow-xl text-center">
+<p class="font-label-caps text-primary mb-1">Water Sculpture</p>
+<p class="font-body-md text-sm text-on-surface">Architectural fittings redefining water delivery.</p>
+</div>
+</div>
+<!-- Duplicate for seamless loop -->
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Blum</span>
+</div>
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Gaggenau</span>
+</div>
+<div class="partner-item relative flex items-center justify-center cursor-pointer group px-8">
+<span class="font-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Dornbracht</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-gutter items-center">
+<div class="w-full md:w-2/3">
+<img alt="High-end kitchen hardware and accessories display" class="w-full h-auto object-cover border border-outline-variant/20" src="https://lh3.googleusercontent.com/aida/ADBb0uhE6M9HMOKCE4fFkLW7a3aRDESmMGafsKK-hZRZxK7eenI5b_X3KtQ8q2lGNhqNOZFkgGAzGgVGGsA-sEMlv8gcJp3yYt8outfCm7PR4RRONYetTe5v526On9B-rPsGbUnSzbiDzs0Msuj_KHtkr2W6Sdf7_diDGsSacwqPNM3Ml_eodsfxzLf4bW7bNXon1w7bC_yvv-w1r1usSVdhEK2bvP1JP1HyxMqCPuMEo3eVKlNMNTQj-xw8gn2aXOvMn6Hkvf2aSsnIHmU"/>
+</div>
+<div class="w-full md:w-1/3 pt-8 md:pt-0 pl-0 md:pl-gutter">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-4">Hardware Integration</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-6">Precision Articulation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">We collaborate exclusively with artisanal European foundries to integrate hinges, handles, and organizational systems that function flawlessly in silence. Every mechanical interaction is engineered for tactile satisfaction.</p>
+<a class="inline-flex items-center gap-2 text-primary font-label-caps text-label-caps hover:text-primary-fixed transition-colors" href="#">
+<span>Explore Technical Specs</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-surface dark:bg-surface-container-lowest border-t border-outline-variant w-full px-margin-edge py-[40px] flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto mt-auto">
+<div class="font-headline-md text-headline-md text-on-surface mb-6 md:mb-0">d. Kitchen</div>
+<div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Press Kit</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Heritage</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-right">
+            © 2024 d. Kitchen. Three Generations of Bespoke Excellence.
+        </div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for Reveal Animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        // Trigger divider animations if present within the section
+                        const dividers = entry.target.querySelectorAll('.animated-divider');
+                        dividers.forEach(div => div.classList.add('active'));
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Parallax Scroll Effect for Typography
+            const mainHeading = document.getElementById('main-heading');
+            
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY;
+                if(scrollPos < 500) {
+                     // Subtle letter spacing increase and slight upward shift based on scroll
+                     mainHeading.style.letterSpacing = `${-0.02 + (scrollPos * 0.0001)}em`;
+                     mainHeading.style.transform = `translateY(${scrollPos * -0.1}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>

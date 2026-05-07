@@ -1,0 +1,57 @@
+﻿{
+    "shapes":  "Sharp (0px)",
+    "colors":  {
+                   "surface":  "#131313",
+                   "onSurface":  "#e5e2e1",
+                   "primary":  "#8CC63F",
+                   "error":  "#ffb4ab",
+                   "tertiary":  "#ffbdea",
+                   "secondary":  "#c6c6c7",
+                   "background":  "#131313",
+                   "primaryContainer":  "#8cc63f"
+               },
+    "projectId":  "15548736228161100251",
+    "spacing":  {
+                    "marginEdge":  "64px",
+                    "sectionGap":  "160px",
+                    "gutter":  "32px",
+                    "unit":  "8px",
+                    "containerMax":  "1440px"
+                },
+    "name":  "Heritage Modernism",
+    "colorMode":  "Dark",
+    "theme":  "Formal Minimalism",
+    "typography":  {
+                       "bodyLg":  {
+                                      "fontSize":  "18px",
+                                      "lineHeight":  "1.6"
+                                  },
+                       "headlineLg":  {
+                                          "letterSpacing":  "-0.01em",
+                                          "lineHeight":  "1.2",
+                                          "fontSize":  "48px"
+                                      },
+                       "labelFont":  "Manrope",
+                       "headlineXl":  {
+                                          "letterSpacing":  "-0.02em",
+                                          "lineHeight":  "1.1",
+                                          "fontSize":  "80px"
+                                      },
+                       "headlineMd":  {
+                                          "fontSize":  "32px",
+                                          "lineHeight":  "1.3"
+                                      },
+                       "headlineFont":  "Noto Serif",
+                       "bodyFont":  "Manrope",
+                       "bodyMd":  {
+                                      "fontSize":  "16px",
+                                      "lineHeight":  "1.6"
+                                  },
+                       "labelCaps":  {
+                                         "letterSpacing":  "0.15em",
+                                         "lineHeight":  "1.0",
+                                         "fontWeight":  "600",
+                                         "fontSize":  "12px"
+                                     }
+                   }
+}
