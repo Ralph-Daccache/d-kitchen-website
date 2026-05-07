@@ -1,0 +1,14 @@
+﻿{
+    "version":  "0.0.1",
+    "configurations":  [
+                           {
+                               "port":  5173,
+                               "runtimeExecutable":  "npm",
+                               "name":  "vite-dev",
+                               "runtimeArgs":  [
+                                                   "run",
+                                                   "dev"
+                                               ]
+                           }
+                       ]
+}
