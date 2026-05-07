@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>d. Kitchen - Precision in Every Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8c937f",
+                        "on-tertiary": "#5e0053",
+                        "tertiary-container": "#ff8ee4",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary": "#2f3131",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#7c1c6d",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface": "#131313",
+                        "on-primary-container": "#304f00",
+                        "on-tertiary-fixed-variant": "#7c1c6e",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-highest": "#353535",
+                        "on-primary": "#203700",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-error": "#690005",
+                        "primary-container": "#8cc63f",
+                        "secondary": "#c6c6c7",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#304f00",
+                        "inverse-primary": "#416900",
+                        "surface-bright": "#393939",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "primary-fixed": "#b7f568",
+                        "secondary-container": "#454747",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#c2c9b3",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#fface8",
+                        "on-primary-fixed": "#102000",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed": "#3a0032",
+                        "primary": "#a6e358",
+                        "outline-variant": "#424938",
+                        "tertiary-fixed": "#ffd7f0",
+                        "tertiary": "#ffbdea",
+                        "surface-container": "#20201f",
+                        "surface-variant": "#353535",
+                        "surface-tint": "#9cd84f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#9cd84f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "160px",
+                        "unit": "8px",
+                        "margin-edge": "64px",
+                        "gutter": "32px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-xl": ["Noto Serif"],
+                        "body-lg": ["Manrope"],
+                        "headline-lg": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["80px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+        /* Custom scrollbar to match the dark aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8cc63f;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen overflow-y-scroll overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-edge bg-surface/80 backdrop-blur-md dark:bg-surface/90 border-b border-outline-variant/20 transition-all duration-300 py-8">
+<div class="flex items-center">
+<img alt="d. Kitchen Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhE6M9HMOKCE4fFkLW7a3aRDESmMGafsKK-hZRZxK7eenI5b_X3KtQ8q2lGNhqNOZFkgGAzGgVGGsA-sEMlv8gcJp3yYt8outfCm7PR4RRONYetTe5v526On9B-rPsGbUnSzbiDzs0Msuj_KHtkr2W6Sdf7_diDGsSacwqPNM3Ml_eodsfxzLf4bW7bNXon1w7bC_yvv-w1r1usSVdhEK2bvP1JP1HyxMqCPuMEo3eVKlNMNTQj-xw8gn2aXOvMn6Hkvf2aSsnIHmU"/>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary font-bold border-b border-primary pb-1 font-label-caps text-label-caps hover:text-primary transition-all duration-300" href="#home">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="html/02-our-story.html">About Us</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="html/03-our-projects.html">Our Projects</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="html/04-materials-brands.html">Materials &amp; Brands</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="html/05-contact-us.html">Contact Us</a>
+</nav>
+<div class="flex items-center">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-6 py-3 rounded-none hover:bg-primary-fixed transition-colors duration-300 flex items-center gap-2">
+                Inquire
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="h-screen w-full relative flex items-center justify-center overflow-hidden" id="home">
+<div class="absolute inset-0 z-0 bg-black">
+<!-- Background Image -->
+<div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A sweeping view of a highly architectural, modern luxury kitchen. The space features dramatic, dark matte cabinetry paired with an expansive island constructed entirely from richly veined white Calacata marble. Natural light streams through full-height minimalist windows, casting sharp, deliberate shadows across the wide-plank oak flooring. The lighting highlights the flawless, monolithic surfaces, creating a formal, quiet luxury atmosphere grounded in black, white, and natural wood tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TGaJq9On8rV9_ibWyveyw4_o1K2i1X06_WDVfhCBXjtxYVbSK1o53RyYc071yLMGCQV1NJWEFN5n1_z8JlSiJrEeY5Dpd7tUlrJ_Rf6fanhBWnhoLaXRktuy1OF_EbN-2KW50hOspxGclf7wDXwZCCORLZI-yHvbFjji0BjsQwJq-f8yTo_etrQ6ZVm9wlmA7htiQPgsl5Wpw7vvJVx9yfa7NECrT4n916G3XPTtnlhzU7jx4N2UPs4DHzmqE3YQoJjpxrNho3lJ');"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center mt-24">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-8 max-w-4xl">Precision in Every Detail</h1>
+<a class="inline-block bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-none hover:bg-primary-fixed transition-colors duration-300" href="html/03-our-projects.html">
+                View Projects
+            </a>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce opacity-70">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Scroll</span>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_downward</span>
+</div>
+</section>
+<!-- About Us Section -->
+<section class="h-screen w-full bg-surface flex items-center py-section-gap relative" id="about">
+<div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="space-y-8 pr-12 border-l border-outline-variant/30 pl-8 h-full flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest">Heritage &amp; Vision</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">A Legacy of Bespoke Excellence</h2>
+<div class="space-y-6 text-on-surface-variant font-body-md text-body-md max-w-xl">
+<p>
+                        Led by its third generation of ownership, d. Kitchen stands as a testament to uncompromising quality and structural integrity. Our practice is rooted in formal minimalism, where every line is deliberate and nothing is superfluous.
+                    </p>
+<p>
+                        We do not merely assemble components; we engineer complete spatial environments. By bridging traditional European craftsmanship with advanced architectural methodologies, we create bespoke culinary spaces that command presence while remaining quietly sophisticated.
+                    </p>
+<p>
+                        Our commitment is absolute: to deliver environments that embody permanence, utilizing only the most rigorously selected materials to ensure a legacy that outlasts its creators.
+                    </p>
+</div>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 border border-on-surface text-on-surface font-label-caps text-label-caps px-6 py-3 rounded-none hover:bg-on-surface hover:text-surface transition-colors duration-300" href="html/02-our-story.html">
+                        Explore Our Philosophy
+                        <span class="material-symbols-outlined" style="font-size: 16px;">east</span>
+</a>
+</div>
+</div>
+<div class="relative h-[70vh] w-full hidden md:block">
+<div class="absolute inset-0 border border-outline-variant/20 m-4 z-10 pointer-events-none"></div>
+<img alt="Detailed view of bespoke kitchen craftsmanship" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uhE6M9HMOKCE4fFkLW7a3aRDESmMGafsKK-hZRZxK7eenI5b_X3KtQ8q2lGNhqNOZFkgGAzGgVGGsA-sEMlv8gcJp3yYt8outfCm7PR4RRONYetTe5v526On9B-rPsGbUnSzbiDzs0Msuj_KHtkr2W6Sdf7_diDGsSacwqPNM3Ml_eodsfxzLf4bW7bNXon1w7bC_yvv-w1r1usSVdhEK2bvP1JP1HyxMqCPuMEo3eVKlNMNTQj-xw8gn2aXOvMn6Hkvf2aSsnIHmU"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Materials & Brands Section -->
+<section class="h-screen w-full bg-surface-dim flex flex-col justify-center py-section-gap overflow-hidden border-t border-outline-variant/10" id="materials">
+<div class="max-w-container-max mx-auto px-margin-edge w-full mb-12">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-6">
+<div>
+<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest block mb-2">Sourced Perfection</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Materials &amp; Brands</h2>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 border border-outline-variant/50 flex items-center justify-center hover:border-primary-container hover:text-primary-container transition-colors duration-300 rounded-none text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 border border-outline-variant/50 flex items-center justify-center hover:border-primary-container hover:text-primary-container transition-colors duration-300 rounded-none text-on-surface">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sliding Gallery -->
+<div class="w-full flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pl-margin-edge pb-8 gap-8" style="scrollbar-width: none;">
+<!-- Material Card 1 -->
+<div class="snap-center shrink-0 w-[85vw] md:w-[600px] h-[50vh] relative group cursor-pointer border border-outline-variant/20 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Extreme close-up macro photography of polished White Calacata marble. The image highlights the deep, intricate charcoal and gold veining against the pristine white background. The lighting is cool and directional, emphasizing the flawless, cool surface of the stone and its high-end architectural quality within a dark UI environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFIaSIactoFx3_A-z7wtyekV3VHfJVpZW2AVbHbJPmPVaDoMGgPJ2m_n9c6-m-cyoF4VLrcm2-XmEyX0-WdFEX64CiIp7nxm8mTK5RTYjOBPchmGCJWzh6iWZcf_TBjkCezCtW5uqDv-erqB6SSp-VhVd-eJ95cPKxBNSWp_YmHYcrqNPM3dtr4-Z6uSI8iZMCgYwwZMGWict61QqA3TByAVmY3D_8HOHht8leRdbTYGAzCEflqeJvNAwlqIn4tzKmppyq0B35XTEC');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Calacata Marble</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Primary Surface Material</p>
+</div>
+</div>
+<!-- Material Card 2 -->
+<div class="snap-center shrink-0 w-[85vw] md:w-[600px] h-[50vh] relative group cursor-pointer border border-outline-variant/20 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" data-alt="A detailed, textural shot of premium wide-plank European oak wood used for cabinetry. The grain is tight, linear, and perfectly aligned, showcasing structural precision. The lighting is warm and subtle, raking across the surface to reveal the tactile matte finish. The image is framed as a pure material study for a minimalist design system." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyfi9YmC-JsY93sAtxRFcNEn6DqRP5paGC9cdfc6-cHe-TpdxgRFC1O5pfAnBXZHXNV5gTT5irVCsFr-7eacAO4cUwqT6So0jgmYaVE6sw0uPOxK8WOUZpL6WeZSWsR2V4_qY0KhsnY8yjYs-4bUC9JEofz5r1mLuElAoCYQ-wjJFLqb9FHuKbUaEdm-1eOdR4NIn1QTi8ujOiKldOtRBw244udnXvx02hcWY1D8IcsOL8G_ReYlkfkJjfLBIf93C2AOoYHwHSRKPS');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">European Oak</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Cabinetry &amp; Accents</p>
+</div>
+</div>
+<!-- Material Card 3 -->
+<div class="snap-center shrink-0 w-[85vw] md:w-[600px] h-[50vh] relative group cursor-pointer border border-outline-variant/20 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A close-up shot of a high-end, matte black kitchen faucet against a dark, minimalist backsplash. The hardware features sharp, industrial lines and a flawless finish, representing premium accessory brands. The lighting is dramatic, casting strict shadows that emphasize the geometric precision of the fitting in a quiet luxury context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRdLIyaXHFNdUSO4whLGY_z3jiwRkawpbXF9D9UG6atpYwBnn30yRLEtlqdtJcU9swrC3LYpmQF7CJyu-YY8aENr5SN0dfgXbodUoOF_8Z5A47Q0yhVvLJEXu5mqeyyD2ASAV-quVBIL5BA3OJmcWmBuemDJJ2vc1uhPBCOh5Vn2QJTDMRPqQ3A5cq3HqtxsguGfQha2jWV_q6FT_Ia7Kir2_Xsfrz_1Y2ojYjfIoFSDW4m7ytt37o9bbZs6ncW5je9N4dwAR_qPgg');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Premium Hardware</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Selected Partner Brands</p>
+</div>
+</div>
+<div class="snap-center shrink-0 w-8 md:w-margin-edge"></div>
+</div>
+</section>
+<!-- Footer Section (Scroll Snapped) -->
+<section class="h-[50vh] w-full bg-surface-container-lowest flex flex-col justify-end border-t border-outline-variant/20 relative" id="contact">
+<div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter py-16">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Begin a Dialogue</h2>
+<div class="space-y-6">
+<div class="relative group">
+<input class="block w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary-container focus:ring-0 text-on-surface font-body-md peer py-2 px-0 transition-colors duration-300" placeholder=" " type="email"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-caps text-label-caps transition-all duration-300 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-6">Email Address</label>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-none hover:bg-primary-fixed transition-colors duration-300 mt-4">
+                        Request Consultation
+                    </button>
+</div>
+</div>
+<div class="flex flex-col justify-end items-start md:items-end space-y-4 text-on-surface-variant font-body-md text-body-md">
+<p>124 Architectural Way</p>
+<p>London, W1A 1AA</p>
+<p class="mt-4">inquiries@dkitchen.com</p>
+<p>+44 20 7946 0958</p>
+</div>
+</div>
+<!-- Shared Component Footer -->
+<footer class="w-full px-margin-edge py-8 flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-outline-variant/20 bg-surface dark:bg-surface-container-lowest transition-all duration-300 ease-in-out">
+<div class="font-headline-md text-headline-md text-on-surface mb-4 md:mb-0">
+                d. Kitchen
+            </div>
+<div class="text-on-surface-variant font-body-md text-body-md mb-4 md:mb-0 text-center md:text-left">
+                © 2024 d. Kitchen. Three Generations of Bespoke Excellence.
+            </div>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Press Kit</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-200" href="#">Heritage</a>
+</nav>
+</footer>
+</section>
+<script type="module" src="/src/main.js"></script>
+</body></html>
