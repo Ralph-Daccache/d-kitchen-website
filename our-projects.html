@@ -99,6 +99,17 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        html { scroll-behavior: smooth; }
+        .snap-section { scroll-margin-top: 104px; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col pt-[104px]">
@@ -116,14 +127,17 @@
 </nav>
 <!-- Main Content -->
 <main class="flex-grow w-full mx-auto pb-section-gap">
-<div class="max-w-container-max mx-auto px-margin-edge pt-section-gap pb-gutter text-center">
+<section class="snap-section min-h-screen flex items-center justify-center w-full">
+<div class="max-w-container-max mx-auto px-margin-edge pt-section-gap pb-gutter text-center reveal">
 <h1 class="font-headline-xl text-headline-xl text-on-surface mb-unit*4">Our Projects</h1>
 <div class="w-24 h-[1px] bg-outline-variant/50 mx-auto mb-unit*4"></div>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">A curated selection of our most distinctive architectural kitchen environments, showcasing the intersection of legacy craftsmanship and minimalist design.</p>
 </div>
+</section>
 <!-- Editorial Layout -->
 <div class="flex flex-col gap-section-gap mt-section-gap/2">
 <!-- Project 1 (Featured) -->
+<section class="snap-section min-h-screen flex items-center justify-center w-full reveal">
 <div class="group cursor-pointer max-w-[1600px] mx-auto w-full px-margin-edge flex flex-col md:flex-row items-center gap-gutter">
 <div class="w-full md:w-2/3 relative aspect-[16/9] overflow-hidden bg-surface-container-lowest">
 <img alt="Luxurious kitchen interior featuring Calacatta Viola marble and smoked oak cabinetry" class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-105 filter grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt8-9tK4yXv-fKkI8C6V7Q7v0p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9e9p9v9"/>
@@ -151,7 +165,9 @@
 </div>
 </div>
 </div>
+</section>
 <!-- Project 2 -->
+<section class="snap-section min-h-screen flex items-center justify-center w-full reveal">
 <div class="group cursor-pointer max-w-[1600px] mx-auto w-full px-margin-edge flex flex-col md:flex-row-reverse items-center gap-gutter">
 <div class="w-full md:w-1/2 relative aspect-[4/5] overflow-hidden bg-surface-container-lowest">
 <img class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-105 filter grayscale hover:grayscale-0" data-alt="A high-contrast, minimalist modern kitchen interior featuring dark oak cabinetry and a stark white marble island. The lighting is dramatic and moody, emphasizing the textures of the wood and stone. The aesthetic is luxurious, formal, and architectural, adhering to a black and white palette with sharp lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyWVtrkQo0BVKbk-zss4ZTUasbqwtx8h5BPgRAQoHSB8sjyQm0_Tf9VYl7pSDHpHqmf_rma7SpIEFHq-jmyigECXBEDWWvZ0HYkI_JkSlh1XbmgrBu_ZXkEPubAF_wf3yY0BoKm590iWpvtjGis74DZ52VrV4yKpZfcJZeT0S4XuNUdZxZCtlnQ7jeVNBNzKNMPdxr9bYOIu7Wtdz6IDPGMUBWcSAcf5F4-XfCtEcUz-vhK-hYXWAe_lP1ZQGJr6V85TU86M5VpU8u"/>
@@ -180,7 +196,9 @@
 </div>
 </div>
 </div>
+</section>
 <!-- Project 3 -->
+<section class="snap-section min-h-screen flex items-center justify-center w-full reveal">
 <div class="group cursor-pointer max-w-[1600px] mx-auto w-full px-margin-edge flex flex-col md:flex-row items-center gap-gutter">
 <div class="w-full md:w-3/5 relative aspect-[3/2] overflow-hidden bg-surface-container-lowest">
 <img class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-105 filter grayscale hover:grayscale-0" data-alt="A sleek, bespoke kitchen design showcasing monolithic dark stone surfaces and integrated brushed steel appliances. The space is illuminated by precise, linear LED lighting that highlights the geometric precision of the cabinetry. The mood is quiet luxury, emphasizing a minimalist, almost brutalist approach to culinary architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvkRnw5ckm5YiqxpghmyLtt6sklir7Egpdl3nc87tmH6G4qtmRkRsEh9fNzztBZJTJWD6NcfJKpO05xOTFzHBES4Oz4Vt_NFyRt4xLLmtd9etGipL5FwVqOHUZ06eZgzDf1Ri3-NV0kXRptjkxXYs8eutTW4xgXuW2oGCPHy25RG9_iJRKPFTG2u8w33fxmBnjvq80SVcwpZgkyF1Mwzfy8RqEkFn1HZfj_RRzFXMua564ZdLPU4UXnRjJWgf2kx-3mTrU_MFfLk3m"/>
@@ -208,13 +226,16 @@
 </div>
 </div>
 </div>
+</section>
 </div>
+<section class="snap-section min-h-screen flex items-center justify-center w-full reveal">
 <div class="mt-section-gap flex justify-center px-margin-edge">
 <button class="border border-outline-variant text-on-surface font-label-caps text-label-caps px-12 py-5 uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors duration-300 relative group overflow-hidden">
 <span class="relative z-10">View Archive</span>
 <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 </button>
 </div>
+</section>
 </main>
 <!-- Footer -->
 <footer class="bg-surface dark:bg-surface-container-lowest border-t border-outline-variant w-full px-margin-edge py-[40px] flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto transition-all duration-300 ease-in-out">
@@ -231,4 +252,102 @@
             © 2024 d. Kitchen. Three Generations of Bespoke Excellence.
         </div>
 </footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ----- Reveal-on-scroll animations -----
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // ----- Full-page smooth section snap (bidirectional) -----
+            const sections = Array.from(document.querySelectorAll('.snap-section'));
+            if (sections.length === 0) return;
+
+            const ANIMATION_MS = 900;
+            const TOUCH_THRESHOLD = 50;
+            const WHEEL_COOLDOWN_MS = 150;
+            let isAnimating = false;
+            let lastWheelTime = 0;
+            let touchStartY = 0;
+
+            function getCurrentSectionIndex() {
+                const viewportCenter = window.scrollY + window.innerHeight / 2;
+                let closest = 0;
+                let minDist = Infinity;
+                sections.forEach((s, i) => {
+                    const rect = s.getBoundingClientRect();
+                    const center = window.scrollY + rect.top + rect.height / 2;
+                    const d = Math.abs(viewportCenter - center);
+                    if (d < minDist) { minDist = d; closest = i; }
+                });
+                return closest;
+            }
+
+            function snapTo(index) {
+                if (index < 0 || index >= sections.length) return;
+                isAnimating = true;
+                sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => { isAnimating = false; }, ANIMATION_MS);
+            }
+
+            function handleWheel(e) {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+                if (isAnimating) { e.preventDefault(); return; }
+                const now = Date.now();
+                if (now - lastWheelTime < WHEEL_COOLDOWN_MS) { e.preventDefault(); return; }
+                lastWheelTime = now;
+                const dir = e.deltaY > 0 ? 1 : -1;
+                const cur = getCurrentSectionIndex();
+                const next = cur + dir;
+                if (next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    snapTo(next);
+                }
+            }
+
+            function handleTouchStart(e) {
+                if (e.touches && e.touches.length > 0) touchStartY = e.touches[0].clientY;
+            }
+
+            function handleTouchMove(e) {
+                if (isAnimating) { e.preventDefault(); return; }
+                if (!e.touches || e.touches.length === 0) return;
+                const dy = touchStartY - e.touches[0].clientY;
+                if (Math.abs(dy) < TOUCH_THRESHOLD) return;
+                const dir = dy > 0 ? 1 : -1;
+                const cur = getCurrentSectionIndex();
+                const next = cur + dir;
+                if (next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    touchStartY = e.touches[0].clientY;
+                    snapTo(next);
+                }
+            }
+
+            function handleKey(e) {
+                if (isAnimating) return;
+                const cur = getCurrentSectionIndex();
+                let next = null;
+                if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') next = cur + 1;
+                else if (e.key === 'ArrowUp' || e.key === 'PageUp') next = cur - 1;
+                else if (e.key === 'Home') next = 0;
+                else if (e.key === 'End') next = sections.length - 1;
+                if (next !== null && next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    snapTo(next);
+                }
+            }
+
+            window.addEventListener('wheel', handleWheel, { passive: false });
+            window.addEventListener('touchstart', handleTouchStart, { passive: true });
+            window.addEventListener('touchmove', handleTouchMove, { passive: false });
+            window.addEventListener('keydown', handleKey);
+        });
+    </script>
 </body></html>

@@ -150,7 +150,7 @@
 </div>
 </header>
 <!-- Hero Section -->
-<section class="h-screen w-full relative flex items-center justify-center overflow-hidden" id="home">
+<section class="snap-section h-screen w-full relative flex items-center justify-center overflow-hidden" id="home">
 <div class="absolute inset-0 z-0 bg-black">
 <!-- Background Image -->
 <div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A sweeping view of a highly architectural, modern luxury kitchen. The space features dramatic, dark matte cabinetry paired with an expansive island constructed entirely from richly veined white Calacata marble. Natural light streams through full-height minimalist windows, casting sharp, deliberate shadows across the wide-plank oak flooring. The lighting highlights the flawless, monolithic surfaces, creating a formal, quiet luxury atmosphere grounded in black, white, and natural wood tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TGaJq9On8rV9_ibWyveyw4_o1K2i1X06_WDVfhCBXjtxYVbSK1o53RyYc071yLMGCQV1NJWEFN5n1_z8JlSiJrEeY5Dpd7tUlrJ_Rf6fanhBWnhoLaXRktuy1OF_EbN-2KW50hOspxGclf7wDXwZCCORLZI-yHvbFjji0BjsQwJq-f8yTo_etrQ6ZVm9wlmA7htiQPgsl5Wpw7vvJVx9yfa7NECrT4n916G3XPTtnlhzU7jx4N2UPs4DHzmqE3YQoJjpxrNho3lJ');"></div>
@@ -168,7 +168,7 @@
 </div>
 </section>
 <!-- About Us Section -->
-<section class="h-screen w-full bg-surface flex items-center py-section-gap relative" id="about">
+<section class="snap-section h-screen w-full bg-surface flex items-center py-section-gap relative" id="about">
 <div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
 <div class="space-y-8 pr-12 border-l border-outline-variant/30 pl-8 h-full flex flex-col justify-center">
 <span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest">Heritage &amp; Vision</span>
@@ -198,7 +198,7 @@
 </div>
 </section>
 <!-- Materials & Brands Section -->
-<section class="h-screen w-full bg-surface-dim flex flex-col justify-center py-section-gap overflow-hidden border-t border-outline-variant/10" id="materials">
+<section class="snap-section h-screen w-full bg-surface-dim flex flex-col justify-center py-section-gap overflow-hidden border-t border-outline-variant/10" id="materials">
 <div class="max-w-container-max mx-auto px-margin-edge w-full mb-12">
 <div class="flex justify-between items-end border-b border-outline-variant/30 pb-6">
 <div>
@@ -248,7 +248,7 @@
 </div>
 </section>
 <!-- Footer Section (Scroll Snapped) -->
-<section class="h-[50vh] w-full bg-surface-container-lowest flex flex-col justify-end border-t border-outline-variant/20 relative" id="contact">
+<section class="snap-section h-[50vh] w-full bg-surface-container-lowest flex flex-col justify-end border-t border-outline-variant/20 relative" id="contact">
 <div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter py-16">
 <div>
 <h2 class="reveal font-headline-lg text-headline-lg text-on-surface mb-8">Begin a Dialogue</h2>
@@ -299,7 +299,7 @@
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
             // ----- Full-page smooth section snap (bidirectional) -----
-            const sections = Array.from(document.querySelectorAll('section'));
+            const sections = Array.from(document.querySelectorAll('.snap-section'));
             if (sections.length === 0) return;
 
             const ANIMATION_MS = 900;            // duration to lock while smooth-scroll plays
