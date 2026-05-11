@@ -113,6 +113,29 @@
         .parallax-img {
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        /* Elegant scroll indicator - vertical line with white segment animating down */
+        .scroll-line-track {
+            width: 2px;
+            height: 56px;
+            background: rgba(229, 226, 225, 0.15);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+        .scroll-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: #e5e2e1;
+            border-radius: 9999px;
+            animation: scroll-line 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        @keyframes scroll-line {
+            0%   { transform: translateY(-100%); }
+            100% { transform: translateY(150%); }
+        }
         /* Custom scrollbar to match the dark aesthetic */
         ::-webkit-scrollbar {
             width: 8px;
@@ -162,9 +185,10 @@
             </a>
 </div>
 <!-- Scroll Indicator -->
-<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce opacity-70">
-<span class="font-label-caps text-label-caps text-on-surface-variant">Scroll</span>
-<span class="material-symbols-outlined text-on-surface-variant">arrow_downward</span>
+<div class="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+<div class="scroll-line-track">
+<div class="scroll-line-fill"></div>
+</div>
 </div>
 </section>
 <!-- About Us Section -->
