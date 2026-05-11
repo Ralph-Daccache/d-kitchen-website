@@ -286,17 +286,107 @@
 </footer>
 </section>
 <script>
-        // IntersectionObserver for scroll-reveal animations (dwoodline.com pattern)
         document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
+            // ----- Reveal-on-scroll animations -----
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+                        revealObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // ----- Full-page smooth section snap (bidirectional) -----
+            const sections = Array.from(document.querySelectorAll('section'));
+            if (sections.length === 0) return;
+
+            const ANIMATION_MS = 900;            // duration to lock while smooth-scroll plays
+            const TOUCH_THRESHOLD = 50;          // min px swipe to trigger section change
+            const WHEEL_COOLDOWN_MS = 150;       // ignore rapid consecutive wheel ticks
+            let isAnimating = false;
+            let lastWheelTime = 0;
+            let touchStartY = 0;
+
+            function getCurrentSectionIndex() {
+                // Pick section whose center is closest to viewport center
+                const viewportCenter = window.scrollY + window.innerHeight / 2;
+                let closest = 0;
+                let minDist = Infinity;
+                sections.forEach((s, i) => {
+                    const rect = s.getBoundingClientRect();
+                    const center = window.scrollY + rect.top + rect.height / 2;
+                    const d = Math.abs(viewportCenter - center);
+                    if (d < minDist) { minDist = d; closest = i; }
+                });
+                return closest;
+            }
+
+            function snapTo(index) {
+                if (index < 0 || index >= sections.length) return;
+                isAnimating = true;
+                sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => { isAnimating = false; }, ANIMATION_MS);
+            }
+
+            function handleWheel(e) {
+                // Allow native horizontal scroll inside snap-x galleries (e.g., Materials carousel)
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+                if (isAnimating) { e.preventDefault(); return; }
+
+                const now = Date.now();
+                if (now - lastWheelTime < WHEEL_COOLDOWN_MS) { e.preventDefault(); return; }
+                lastWheelTime = now;
+
+                const dir = e.deltaY > 0 ? 1 : -1;
+                const cur = getCurrentSectionIndex();
+                const next = cur + dir;
+                if (next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    snapTo(next);
+                }
+            }
+
+            function handleTouchStart(e) {
+                if (e.touches && e.touches.length > 0) touchStartY = e.touches[0].clientY;
+            }
+
+            function handleTouchMove(e) {
+                if (isAnimating) { e.preventDefault(); return; }
+                if (!e.touches || e.touches.length === 0) return;
+                const dy = touchStartY - e.touches[0].clientY;
+                if (Math.abs(dy) < TOUCH_THRESHOLD) return;
+
+                const dir = dy > 0 ? 1 : -1;
+                const cur = getCurrentSectionIndex();
+                const next = cur + dir;
+                if (next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    touchStartY = e.touches[0].clientY; // reset to prevent multi-trigger
+                    snapTo(next);
+                }
+            }
+
+            // Keyboard support: arrow keys, page up/down, home/end
+            function handleKey(e) {
+                if (isAnimating) return;
+                const cur = getCurrentSectionIndex();
+                let next = null;
+                if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') next = cur + 1;
+                else if (e.key === 'ArrowUp' || e.key === 'PageUp') next = cur - 1;
+                else if (e.key === 'Home') next = 0;
+                else if (e.key === 'End') next = sections.length - 1;
+                if (next !== null && next >= 0 && next < sections.length) {
+                    e.preventDefault();
+                    snapTo(next);
+                }
+            }
+
+            window.addEventListener('wheel', handleWheel, { passive: false });
+            window.addEventListener('touchstart', handleTouchStart, { passive: true });
+            window.addEventListener('touchmove', handleTouchMove, { passive: false });
+            window.addEventListener('keydown', handleKey);
         });
     </script>
 </body></html>
