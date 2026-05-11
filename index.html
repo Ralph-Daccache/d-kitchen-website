@@ -97,12 +97,13 @@
     </script>
 <style>
         html {
-            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
+        }
+        body {
+            scroll-snap-type: y proximity;
         }
         section {
             scroll-snap-align: start;
-            scroll-snap-stop: always;
         }
         /* Custom scrollbar to match the dark aesthetic */
         ::-webkit-scrollbar {
@@ -146,14 +147,14 @@
 <!-- Background Image -->
 <div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A sweeping view of a highly architectural, modern luxury kitchen. The space features dramatic, dark matte cabinetry paired with an expansive island constructed entirely from richly veined white Calacata marble. Natural light streams through full-height minimalist windows, casting sharp, deliberate shadows across the wide-plank oak flooring. The lighting highlights the flawless, monolithic surfaces, creating a formal, quiet luxury atmosphere grounded in black, white, and natural wood tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TGaJq9On8rV9_ibWyveyw4_o1K2i1X06_WDVfhCBXjtxYVbSK1o53RyYc071yLMGCQV1NJWEFN5n1_z8JlSiJrEeY5Dpd7tUlrJ_Rf6fanhBWnhoLaXRktuy1OF_EbN-2KW50hOspxGclf7wDXwZCCORLZI-yHvbFjji0BjsQwJq-f8yTo_etrQ6ZVm9wlmA7htiQPgsl5Wpw7vvJVx9yfa7NECrT4n916G3XPTtnlhzU7jx4N2UPs4DHzmqE3YQoJjpxrNho3lJ');"></div>
 </div>
-<div class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center mt-24">
+<div class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center">
 <h1 class="font-headline-xl text-headline-xl text-on-surface mb-8 max-w-4xl">Precision in Every Detail</h1>
 <a class="inline-block bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-none hover:bg-primary-fixed transition-colors duration-300" href="our-projects.html">
                 View Projects
             </a>
 </div>
 <!-- Scroll Indicator -->
-<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce opacity-70">
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce opacity-70">
 <span class="font-label-caps text-label-caps text-on-surface-variant">Scroll</span>
 <span class="material-symbols-outlined text-on-surface-variant">arrow_downward</span>
 </div>
