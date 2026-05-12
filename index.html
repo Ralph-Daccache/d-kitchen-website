@@ -113,13 +113,6 @@
         .parallax-img {
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        /* Semplicità font for hero description — falls back to Italiana
-           (Google Fonts) if Semplicità isn't available locally */
-        .font-semplicita {
-            font-family: 'Semplicità', 'Semplicita Pro', 'Italiana', 'Cormorant Garamond', serif;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
         /* Elegant scroll indicator - vertical line with white segment animating down */
         .scroll-line-track {
             width: 2px;
@@ -188,6 +181,19 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #8cc63f;
         }
+            /* ============================================================
+           Global font - Semplicita (preferred) / Italiana fallback
+           Applies to body and all Tailwind font-* utility classes
+           ============================================================ */
+        body,
+        .font-headline-xl, .font-headline-lg, .font-headline-md,
+        .font-body-lg, .font-body-md,
+        .font-label-caps,
+        h1, h2, h3, h4, h5, h6, p, a, span, button, input, label, li {
+            font-family: 'Semplicita', 'Semplicita Pro', 'Italiana', 'Cormorant Garamond', serif !important;
+        }
+        /* Letter-spacing tweaks for elegance */
+        .font-label-caps, .text-label-caps { letter-spacing: 0.15em; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
@@ -237,8 +243,7 @@ Inquire
 <div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A sweeping view of a highly architectural, modern luxury kitchen. The space features dramatic, dark matte cabinetry paired with an expansive island constructed entirely from richly veined white Calacata marble. Natural light streams through full-height minimalist windows, casting sharp, deliberate shadows across the wide-plank oak flooring. The lighting highlights the flawless, monolithic surfaces, creating a formal, quiet luxury atmosphere grounded in black, white, and natural wood tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TGaJq9On8rV9_ibWyveyw4_o1K2i1X06_WDVfhCBXjtxYVbSK1o53RyYc071yLMGCQV1NJWEFN5n1_z8JlSiJrEeY5Dpd7tUlrJ_Rf6fanhBWnhoLaXRktuy1OF_EbN-2KW50hOspxGclf7wDXwZCCORLZI-yHvbFjji0BjsQwJq-f8yTo_etrQ6ZVm9wlmA7htiQPgsl5Wpw7vvJVx9yfa7NECrT4n916G3XPTtnlhzU7jx4N2UPs4DHzmqE3YQoJjpxrNho3lJ');"></div>
 </div>
 <div class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center">
-<h1 class="reveal visible font-headline-xl text-headline-xl text-on-surface mb-6 max-w-4xl">Precision in Every Detail</h1>
-<p class="font-semplicita reveal visible text-on-surface-variant text-xl md:text-2xl max-w-2xl mb-10 italic">Bespoke kitchen environments crafted with architectural precision and three generations of heritage.</p>
+<h1 class="reveal visible font-headline-xl text-headline-xl text-on-surface mb-8 max-w-4xl">Precision in Every Detail</h1>
 <a class="inline-block bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-none hover:bg-primary-fixed transition-colors duration-300" href="our-projects.html">
                 View Projects
             </a>

@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400;700&amp;family=Italiana&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         .material-symbols-outlined {
@@ -98,6 +98,19 @@
         }
 
 
+            /* ============================================================
+           Global font - Semplicita (preferred) / Italiana fallback
+           Applies to body and all Tailwind font-* utility classes
+           ============================================================ */
+        body,
+        .font-headline-xl, .font-headline-lg, .font-headline-md,
+        .font-body-lg, .font-body-md,
+        .font-label-caps,
+        h1, h2, h3, h4, h5, h6, p, a, span, button, input, label, li {
+            font-family: 'Semplicita', 'Semplicita Pro', 'Italiana', 'Cormorant Garamond', serif !important;
+        }
+        /* Letter-spacing tweaks for elegance */
+        .font-label-caps, .text-label-caps { letter-spacing: 0.15em; }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
