@@ -168,6 +168,14 @@
         }
         /* Letter-spacing tweaks for elegance */
         .font-label-caps, .text-label-caps { letter-spacing: 0.15em; }
+        /* Keep Material Symbols icons rendering as icons, not Italiana text */
+        .material-symbols-outlined,
+        span.material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
