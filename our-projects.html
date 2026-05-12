@@ -133,10 +133,7 @@
             0%   { transform: translateY(-100%); }
             100% { transform: translateY(150%); }
         }
-        /* Mobile menu transitions */
-        #mobile-menu { transition: opacity 0.3s ease; }
-        #mobile-menu.is-open { opacity: 1; }
-        #mobile-menu:not(.is-open) { opacity: 0; pointer-events: none; }
+        /* Mobile menu - inline display:none/flex toggled via JS */
         /* ============================================================
            Mobile optimizations - auto-applied below 768px
            ============================================================ */
