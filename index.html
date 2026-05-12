@@ -136,6 +136,21 @@
             0%   { transform: translateY(-100%); }
             100% { transform: translateY(150%); }
         }
+        /* Mobile optimizations - auto-applied below 768px */
+        @media (max-width: 767px) {
+            .px-margin-edge { padding-left: 24px !important; padding-right: 24px !important; }
+            .text-headline-xl { font-size: 38px !important; line-height: 1.1 !important; letter-spacing: -0.02em !important; }
+            .text-headline-lg { font-size: 28px !important; line-height: 1.2 !important; }
+            .text-headline-md { font-size: 22px !important; line-height: 1.3 !important; }
+            .text-body-lg { font-size: 15px !important; line-height: 1.6 !important; }
+            .py-section-gap { padding-top: 48px !important; padding-bottom: 48px !important; }
+            /* Hide About Us section's image side and adjust borders on mobile */
+            .border-l.border-outline-variant\/30.pl-8 { border-left: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+            /* Reduce header py on mobile */
+            header { padding-top: 18px !important; padding-bottom: 18px !important; }
+            /* Hide complex absolute elements that overflow on mobile */
+            .hidden-on-mobile { display: none !important; }
+        }
         /* Custom scrollbar to match the dark aesthetic */
         ::-webkit-scrollbar {
             width: 8px;
@@ -165,13 +180,33 @@
 <a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="materials-brands.html">Materials &amp; Brands</a>
 <a class="text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface transition-colors duration-300" href="contact-us.html">Contact Us</a>
 </nav>
-<div class="flex items-center">
-<a href="contact-us.html"><button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-6 py-3 rounded-none hover:bg-primary-fixed transition-colors duration-300 flex items-center gap-2">
+<div class="flex items-center gap-3">
+<a class="hidden md:inline-block" href="contact-us.html"><button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-6 py-3 rounded-none hover:bg-primary-fixed transition-colors duration-300 flex items-center gap-2">
                 Inquire
                 <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
 </button></a>
+<button id="mobile-menu-toggle" class="md:hidden text-on-surface" aria-label="Open menu">
+<span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+</button>
 </div>
 </header>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center" style="display:none;">
+<button id="mobile-menu-close" class="absolute top-6 right-6 text-on-surface" aria-label="Close menu">
+<span class="material-symbols-outlined" style="font-size: 32px;">close</span>
+</button>
+<nav class="flex flex-col items-center gap-7 text-center px-8">
+<a class="font-label-caps tracking-[0.25em] text-primary font-bold text-base uppercase border-b border-primary pb-1" href="index.html">Home</a>
+<a class="font-label-caps tracking-[0.25em] text-on-surface text-base uppercase" href="our-story.html">About Us</a>
+<a class="font-label-caps tracking-[0.25em] text-on-surface text-base uppercase" href="our-projects.html">Our Projects</a>
+<a class="font-label-caps tracking-[0.25em] text-on-surface text-base uppercase" href="materials-brands.html">Materials &amp; Brands</a>
+<a class="font-label-caps tracking-[0.25em] text-on-surface text-base uppercase" href="contact-us.html">Contact Us</a>
+<a class="mt-6 bg-primary-container text-on-primary-container font-label-caps text-label-caps px-10 py-4 rounded-none flex items-center gap-2 uppercase tracking-[0.2em]" href="contact-us.html">
+Inquire
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</nav>
+</div>
 <!-- Hero Section -->
 <section class="snap-section h-screen w-full relative flex items-center justify-center overflow-hidden" id="home">
 <div class="absolute inset-0 z-0 bg-black">
@@ -311,6 +346,16 @@
 </section>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ----- Mobile menu toggle -----
+            const mToggle = document.getElementById('mobile-menu-toggle');
+            const mClose = document.getElementById('mobile-menu-close');
+            const mMenu = document.getElementById('mobile-menu');
+            function openMenu() { if (mMenu) { mMenu.style.display = 'flex'; document.body.style.overflow = 'hidden'; } }
+            function closeMenu() { if (mMenu) { mMenu.style.display = 'none'; document.body.style.overflow = ''; } }
+            mToggle?.addEventListener('click', openMenu);
+            mClose?.addEventListener('click', closeMenu);
+            mMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
             // ----- Reveal-on-scroll animations -----
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -322,7 +367,10 @@
             }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // ----- Full-page smooth section snap (bidirectional) -----
+            // ----- Full-page smooth section snap (DESKTOP ONLY) -----
+            // Skip snap on mobile - natural touch scroll feels better and prevents overflow lock
+            if (window.innerWidth < 768) return;
+
             const sections = Array.from(document.querySelectorAll('.snap-section'));
             if (sections.length === 0) return;
 
