@@ -129,55 +129,40 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Workflow hover branches - 2 short lime lines extend from the
-           dot toward the paragraph side with text labels at their tips */
-        .step-dot-wrap { position: relative; display: inline-block; }
-        .step-dot-wrap .branch {
+        /* Workflow hover branches - sit at the OUTER edge of each paragraph
+           column (away from the dot, on the page-edge side). Short lime line
+           with an uppercase label. Hidden until step is hovered. */
+        .outer-branches {
             position: absolute;
             top: 50%;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 18px;
             opacity: 0;
             pointer-events: none;
-            white-space: nowrap;
             transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(-50%) translateX(0);
         }
-        .step-dot-wrap .branch::before {
-            content: '';
+        @media (min-width: 768px) { .outer-branches { display: flex; } }
+        .outer-branches.outer-left  { left: 0;  align-items: flex-start; transform: translateY(-50%) translateX(-12px); }
+        .outer-branches.outer-right { right: 0; align-items: flex-end;   transform: translateY(-50%) translateX(12px); }
+        .branch-row { display: flex; align-items: center; gap: 12px; }
+        .outer-left  .branch-row { flex-direction: row; }
+        .outer-right .branch-row { flex-direction: row-reverse; }
+        .branch-line {
             display: block;
-            width: 32px;
+            width: 28px;
             height: 1px;
             background: rgba(140, 198, 63, 0.6);
-            flex-shrink: 0;
         }
         .branch-label {
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(229, 226, 225, 0.65);
+            color: rgba(229, 226, 225, 0.7);
+            white-space: nowrap;
         }
-        /* Branches-left = paragraph on the LEFT (steps 1 & 3) - lines extend left, labels further left */
-        .branches-left .branch {
-            right: calc(50% + 8px);
-            flex-direction: row-reverse;
-            transform: translateY(-50%) translateX(-8px);
-        }
-        /* Branches-right = paragraph on the RIGHT (steps 2 & 4) */
-        .branches-right .branch {
-            left: calc(50% + 8px);
-            transform: translateY(-50%) translateX(8px);
-        }
-        .workflow-step:hover .branches-left .branch-top,
-        .workflow-step:hover .branches-right .branch-top {
-            transform: translateY(calc(-50% - 18px)) translateX(0);
-            opacity: 1;
-        }
-        .workflow-step:hover .branches-left .branch-bot,
-        .workflow-step:hover .branches-right .branch-bot {
-            transform: translateY(calc(-50% + 18px)) translateX(0);
-            opacity: 1;
-        }
+        .workflow-step:hover .outer-branches { opacity: 1; transform: translateY(-50%) translateX(0); }
         /* Subtle dot scale on hover */
         .workflow-step:hover .step-dot { transform: scale(1.4); }
         .step-dot { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -355,58 +340,66 @@ Inquire
 <div class="absolute left-1/2 top-2 bottom-2 w-[1px] bg-outline-variant/30 -translate-x-1/2"></div>
 <!-- Step 1 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="1">
-<div class="text-right pr-3 md:pr-8">
+<div class="text-right pr-3 md:pr-8 relative">
+<div class="outer-branches outer-left">
+<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Site Survey</span></div>
+<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Brief Definition</span></div>
+</div>
+<div class="md:max-w-[340px] md:ml-auto">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">01</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Initial Consultation</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">A deep dive into your spatial requirements and aesthetic vision to shape the foundation of every project.</p>
 </div>
-<div class="step-dot-wrap branches-left">
-<span class="branch branch-top"><span class="branch-label">Site Survey</span></span>
-<span class="branch branch-bot"><span class="branch-label">Brief Definition</span></span>
-<div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 </div>
+<div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 <div></div>
 </div>
 <!-- Step 2 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="2">
 <div></div>
-<div class="step-dot-wrap branches-right">
-<span class="branch branch-top"><span class="branch-label">CAD Modeling</span></span>
-<span class="branch branch-bot"><span class="branch-label">Material Specs</span></span>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div class="text-left pl-3 md:pl-8 relative">
+<div class="outer-branches outer-right">
+<div class="branch-row"><span class="branch-label">CAD Modeling</span><span class="branch-line"></span></div>
+<div class="branch-row"><span class="branch-label">Material Specs</span><span class="branch-line"></span></div>
 </div>
-<div class="text-left pl-3 md:pl-8">
+<div class="md:max-w-[340px]">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">02</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Spatial Engineering</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">Precision CAD modeling and rigorous material specification define the core structure of the environment.</p>
 </div>
 </div>
+</div>
 <!-- Step 3 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="3">
-<div class="text-right pr-3 md:pr-8">
+<div class="text-right pr-3 md:pr-8 relative">
+<div class="outer-branches outer-left">
+<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Hand Finishing</span></div>
+<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Quality Control</span></div>
+</div>
+<div class="md:max-w-[340px] md:ml-auto">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">03</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Artisanal Production</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">Master craftsmen hand-finish every component in our dedicated workshop, honouring three generations of tradition.</p>
 </div>
-<div class="step-dot-wrap branches-left">
-<span class="branch branch-top"><span class="branch-label">Hand Finishing</span></span>
-<span class="branch branch-bot"><span class="branch-label">Quality Control</span></span>
-<div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 </div>
+<div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 <div></div>
 </div>
 <!-- Step 4 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center" data-step="4">
 <div></div>
-<div class="step-dot-wrap branches-right">
-<span class="branch branch-top"><span class="branch-label">Site Coordination</span></span>
-<span class="branch branch-bot"><span class="branch-label">Turnkey Handover</span></span>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div class="text-left pl-3 md:pl-8 relative">
+<div class="outer-branches outer-right">
+<div class="branch-row"><span class="branch-label">Site Coordination</span><span class="branch-line"></span></div>
+<div class="branch-row"><span class="branch-label">Turnkey Handover</span><span class="branch-line"></span></div>
 </div>
-<div class="text-left pl-3 md:pl-8">
+<div class="md:max-w-[340px]">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">04</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Precision Assembly</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">On-site installation handled with absolute technical rigor and cleanliness, delivered turnkey to your space.</p>
+</div>
 </div>
 </div>
 </div>
