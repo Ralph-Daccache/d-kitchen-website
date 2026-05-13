@@ -129,44 +129,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Workflow branches - sit at the OUTER edge of each paragraph column
-           (away from the dot, toward the page edge). Two short lime lines
-           + uppercase labels per step. Always visible. */
-        .outer-branches {
-            position: absolute;
-            top: 50%;
-            display: none;
-            flex-direction: column;
-            gap: 20px;
-            opacity: 0.85;
-            transform: translateY(-50%);
-            transition: opacity 0.4s ease;
-        }
-        @media (min-width: 768px) { .outer-branches { display: flex; } }
-        .outer-branches.outer-left  { left: 0;  align-items: flex-start; }
-        .outer-branches.outer-right { right: 0; align-items: flex-end; }
-        .branch-row { display: flex; align-items: center; gap: 12px; }
-        .outer-left  .branch-row { flex-direction: row; }
-        .outer-right .branch-row { flex-direction: row-reverse; }
-        .branch-line {
-            display: block;
-            width: 32px;
-            height: 1px;
-            background: rgba(140, 198, 63, 0.7);
-            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s;
-        }
-        .branch-label {
-            font-size: 11px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(229, 226, 225, 0.75);
-            white-space: nowrap;
-            transition: color 0.4s;
-        }
-        /* Hover: lines extend slightly, label brightens, dot pulses */
-        .workflow-step:hover .outer-branches { opacity: 1; }
-        .workflow-step:hover .branch-line { width: 48px; background: rgba(140, 198, 63, 1); }
-        .workflow-step:hover .branch-label { color: rgba(229, 226, 225, 1); }
+        /* Subtle dot scale on hover */
         .workflow-step:hover .step-dot { transform: scale(1.4); }
         .step-dot { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         /* Elegant scroll indicator - vertical line with white segment animating down */
@@ -343,16 +306,10 @@ Inquire
 <div class="absolute left-1/2 top-2 bottom-2 w-[1px] bg-outline-variant/30 -translate-x-1/2"></div>
 <!-- Step 1 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="1">
-<div class="text-right pr-3 md:pr-8 relative">
-<div class="outer-branches outer-left">
-<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Site Survey</span></div>
-<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Brief Definition</span></div>
-</div>
-<div class="md:max-w-[340px] md:ml-auto">
+<div class="text-right pr-3 md:pr-8">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">01</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Initial Consultation</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">A deep dive into your spatial requirements and aesthetic vision to shape the foundation of every project.</p>
-</div>
 </div>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 <div></div>
@@ -361,30 +318,18 @@ Inquire
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="2">
 <div></div>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
-<div class="text-left pl-3 md:pl-8 relative">
-<div class="outer-branches outer-right">
-<div class="branch-row"><span class="branch-label">CAD Modeling</span><span class="branch-line"></span></div>
-<div class="branch-row"><span class="branch-label">Material Specs</span><span class="branch-line"></span></div>
-</div>
-<div class="md:max-w-[340px]">
+<div class="text-left pl-3 md:pl-8">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">02</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Spatial Engineering</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">Precision CAD modeling and rigorous material specification define the core structure of the environment.</p>
 </div>
 </div>
-</div>
 <!-- Step 3 -->
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center mb-8 md:mb-10" data-step="3">
-<div class="text-right pr-3 md:pr-8 relative">
-<div class="outer-branches outer-left">
-<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Hand Finishing</span></div>
-<div class="branch-row"><span class="branch-line"></span><span class="branch-label">Quality Control</span></div>
-</div>
-<div class="md:max-w-[340px] md:ml-auto">
+<div class="text-right pr-3 md:pr-8">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">03</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Artisanal Production</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">Master craftsmen hand-finish every component in our dedicated workshop, honouring three generations of tradition.</p>
-</div>
 </div>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
 <div></div>
@@ -393,16 +338,10 @@ Inquire
 <div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-center" data-step="4">
 <div></div>
 <div class="step-dot w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
-<div class="text-left pl-3 md:pl-8 relative">
-<div class="outer-branches outer-right">
-<div class="branch-row"><span class="branch-label">Site Coordination</span><span class="branch-line"></span></div>
-<div class="branch-row"><span class="branch-label">Turnkey Handover</span><span class="branch-line"></span></div>
-</div>
-<div class="md:max-w-[340px]">
+<div class="text-left pl-3 md:pl-8">
 <span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">04</span>
 <h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Precision Assembly</h3>
 <p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">On-site installation handled with absolute technical rigor and cleanliness, delivered turnkey to your space.</p>
-</div>
 </div>
 </div>
 </div>
