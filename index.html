@@ -208,6 +208,13 @@
             font-style: normal !important;
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+            /* Slightly larger header navigation links for better legibility */
+        header .hidden.md\:flex > a,
+        nav.fixed .hidden.md\:flex > a,
+        nav.fixed > .hidden.md\:flex > a {
+            font-size: 14px !important;
+            letter-spacing: 0.18em !important;
+        }
     </style>
 <script>
   // Always start at top on load/refresh - disable browser scroll restoration
@@ -275,9 +282,10 @@ Inquire
 <!-- About Us Section -->
 <section class="snap-section h-screen w-full bg-surface flex items-center py-section-gap relative" id="about">
 <div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
-<div class="space-y-8 pr-12 border-l border-outline-variant/30 pl-8 h-full flex flex-col justify-center">
-<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest">Heritage &amp; Vision</span>
-<h2 class="reveal font-headline-lg text-headline-lg text-on-surface">A Legacy of Bespoke Excellence</h2>
+<div class="space-y-8 pr-12 border-l-2 border-primary-container/40 pl-8 h-full flex flex-col justify-center relative">
+<div class="absolute -left-[3px] top-1/2 -translate-y-1/2 w-[5px] h-24 bg-primary-container"></div>
+<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest inline-flex items-center gap-3"><span class="w-8 h-[1px] bg-primary-container"></span>Heritage &amp; Vision</span>
+<h2 class="reveal font-headline-lg text-headline-lg text-on-surface">A Legacy of <span class="text-primary-container italic">Bespoke</span> Excellence</h2>
 <div class="space-y-6 text-on-surface-variant font-body-md text-body-md max-w-xl">
 <p>
                         Led by its third generation of ownership, d. Kitchen stands as a testament to uncompromising quality and structural integrity. Our practice is rooted in formal minimalism, where every line is deliberate and nothing is superfluous.
