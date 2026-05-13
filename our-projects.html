@@ -100,7 +100,7 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         html { scroll-behavior: smooth; }
-        .snap-section { scroll-margin-top: 104px; }
+        .snap-section { scroll-margin-top: 0; }
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -150,8 +150,8 @@
             .pb-section-gap { padding-bottom: 64px !important; }
             .mt-section-gap { margin-top: 48px !important; }
             .gap-section-gap { gap: 48px !important; }
-            /* Reduce snap section scroll-margin so content sits nicer */
-            .snap-section { scroll-margin-top: 72px !important; }
+            /* Snap to viewport top - no margin offset (fixed header is overlay) */
+            .snap-section { scroll-margin-top: 0 !important; }
             /* Footer stacks tighter */
             footer { padding-top: 32px !important; padding-bottom: 32px !important; gap: 16px !important; }
         }
