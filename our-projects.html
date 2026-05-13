@@ -101,6 +101,12 @@
         }
         html { scroll-behavior: smooth; }
         .snap-section { scroll-margin-top: 0; }
+        /* Native CSS scroll-snap on mobile - lets iOS Safari handle scrolling
+           naturally so the address bar shrinks/hides like on any other site */
+        @media (max-width: 767px) {
+            html { scroll-snap-type: y mandatory; }
+            .snap-section { scroll-snap-align: start; scroll-snap-stop: always; }
+        }
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -421,7 +427,10 @@ Begin a Project
             }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // ----- Full-page smooth section snap (desktop + mobile) -----
+            // ----- Full-page smooth section snap (DESKTOP) -----
+            // Mobile uses native CSS scroll-snap (set above in the @media block)
+            // so the address bar can shrink naturally on swipe down.
+            if (window.innerWidth < 768) return;
             const sections = Array.from(document.querySelectorAll('.snap-section'));
             if (sections.length === 0) return;
 
