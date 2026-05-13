@@ -387,26 +387,6 @@ Inquire
 </section>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ----- Lock section heights to current visible viewport -----
-            // Solves the iOS Safari address-bar quirk: window.innerHeight
-            // tracks the *actually visible* area (shrinks when address bar
-            // shows, grows when it hides). Setting section heights to that
-            // value keeps sections matching the viewport in every state.
-            function lockSectionHeights() {
-                if (window.innerWidth >= 768) return; // desktop unchanged
-                const h = window.innerHeight;
-                document.querySelectorAll('.snap-section').forEach(s => {
-                    s.style.minHeight = h + 'px';
-                    s.style.height = h + 'px';
-                });
-            }
-            lockSectionHeights();
-            let resizeTimer = null;
-            window.addEventListener('resize', () => {
-                if (resizeTimer) clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(lockSectionHeights, 80);
-            });
-
             // ----- Mobile menu toggle -----
             const mToggle = document.getElementById('mobile-menu-toggle');
             const mClose = document.getElementById('mobile-menu-close');
@@ -458,14 +438,7 @@ Inquire
                 if (index < 0 || index >= sections.length) return;
                 isAnimating = true;
                 sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                setTimeout(() => {
-                    // Address bar may have shown/hidden during the smooth-scroll.
-                    // Resync section heights to current viewport, then snap precisely
-                    // to the target section's NEW offsetTop. Instant scroll, no animation.
-                    lockSectionHeights();
-                    sections[index].scrollIntoView({ behavior: 'auto', block: 'start' });
-                    isAnimating = false;
-                }, ANIMATION_MS);
+                setTimeout(() => { isAnimating = false; }, ANIMATION_MS);
             }
 
             function handleWheel(e) {
