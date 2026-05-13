@@ -164,15 +164,6 @@
                 padding-bottom: 16px !important;
                 box-sizing: border-box !important;
             }
-            /* Project 3 (Monolith) - 4th snap section, image is taller (3:2)
-               than P1/P2 so content overflowed and 'Explore Project' was
-               clipped on smaller phones. Compress just this one. */
-            section.snap-section:nth-of-type(4) .aspect-\[3\/2\] { aspect-ratio: 16/9 !important; }
-            section.snap-section:nth-of-type(4) .pt-8 { padding-top: 16px !important; }
-            section.snap-section:nth-of-type(4) .mb-4 { margin-bottom: 8px !important; }
-            section.snap-section:nth-of-type(4) .mb-6 { margin-bottom: 12px !important; }
-            section.snap-section:nth-of-type(4) .mt-8 { margin-top: 16px !important; }
-            section.snap-section:nth-of-type(4) .space-y-4 > * + * { margin-top: 10px !important; }
             /* Closing archive section is content-heavy - compress gaps on mobile */
             section.snap-section:last-of-type .gap-8 { gap: 12px !important; }
             section.snap-section:last-of-type .mt-4, section.snap-section:last-of-type .mt-2 { margin-top: 4px !important; }
@@ -323,11 +314,11 @@ Inquire
 </section>
 <!-- Project 3 -->
 <section class="snap-section min-h-screen flex items-center justify-center w-full reveal">
-<div class="group cursor-pointer max-w-[1600px] mx-auto w-full px-margin-edge flex flex-col md:flex-row items-center gap-gutter">
-<div class="w-full md:w-3/5 relative aspect-[3/2] overflow-hidden bg-surface-container-lowest">
+<div class="group cursor-pointer max-w-[1600px] mx-auto w-full px-margin-edge flex flex-col md:flex-row-reverse items-center gap-gutter">
+<div class="w-full md:w-2/3 relative aspect-[16/9] overflow-hidden bg-surface-container-lowest">
 <img class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-105 filter grayscale hover:grayscale-0" data-alt="A sleek, bespoke kitchen design showcasing monolithic dark stone surfaces and integrated brushed steel appliances. The space is illuminated by precise, linear LED lighting that highlights the geometric precision of the cabinetry. The mood is quiet luxury, emphasizing a minimalist, almost brutalist approach to culinary architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvkRnw5ckm5YiqxpghmyLtt6sklir7Egpdl3nc87tmH6G4qtmRkRsEh9fNzztBZJTJWD6NcfJKpO05xOTFzHBES4Oz4Vt_NFyRt4xLLmtd9etGipL5FwVqOHUZ06eZgzDf1Ri3-NV0kXRptjkxXYs8eutTW4xgXuW2oGCPHy25RG9_iJRKPFTG2u8w33fxmBnjvq80SVcwpZgkyF1Mwzfy8RqEkFn1HZfj_RRzFXMua564ZdLPU4UXnRjJWgf2kx-3mTrU_MFfLk3m"/>
 </div>
-<div class="w-full md:w-2/5 pt-8 md:pt-0 md:pl-16 border-t md:border-t-0 md:border-l border-outline-variant/30 flex flex-col justify-center transition-colors group-hover:border-primary/50">
+<div class="w-full md:w-1/3 pt-8 md:pt-0 md:pr-16 border-t md:border-t-0 md:border-r border-outline-variant/30 flex flex-col justify-center md:items-end transition-colors group-hover:border-primary/50">
 <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">03</span>
 <h3 class="font-headline-lg text-headline-lg text-on-surface mb-6">Monolith</h3>
 <ul class="space-y-4">
