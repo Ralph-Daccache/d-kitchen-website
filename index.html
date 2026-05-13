@@ -129,41 +129,44 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Workflow hover branches - sit at the OUTER edge of each paragraph
-           column (away from the dot, on the page-edge side). Short lime line
-           with an uppercase label. Hidden until step is hovered. */
+        /* Workflow branches - sit at the OUTER edge of each paragraph column
+           (away from the dot, toward the page edge). Two short lime lines
+           + uppercase labels per step. Always visible. */
         .outer-branches {
             position: absolute;
             top: 50%;
             display: none;
             flex-direction: column;
-            gap: 18px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateY(-50%) translateX(0);
+            gap: 20px;
+            opacity: 0.85;
+            transform: translateY(-50%);
+            transition: opacity 0.4s ease;
         }
         @media (min-width: 768px) { .outer-branches { display: flex; } }
-        .outer-branches.outer-left  { left: 0;  align-items: flex-start; transform: translateY(-50%) translateX(-12px); }
-        .outer-branches.outer-right { right: 0; align-items: flex-end;   transform: translateY(-50%) translateX(12px); }
+        .outer-branches.outer-left  { left: 0;  align-items: flex-start; }
+        .outer-branches.outer-right { right: 0; align-items: flex-end; }
         .branch-row { display: flex; align-items: center; gap: 12px; }
         .outer-left  .branch-row { flex-direction: row; }
         .outer-right .branch-row { flex-direction: row-reverse; }
         .branch-line {
             display: block;
-            width: 28px;
+            width: 32px;
             height: 1px;
-            background: rgba(140, 198, 63, 0.6);
+            background: rgba(140, 198, 63, 0.7);
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s;
         }
         .branch-label {
             font-size: 11px;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: rgba(229, 226, 225, 0.7);
+            color: rgba(229, 226, 225, 0.75);
             white-space: nowrap;
+            transition: color 0.4s;
         }
-        .workflow-step:hover .outer-branches { opacity: 1; transform: translateY(-50%) translateX(0); }
-        /* Subtle dot scale on hover */
+        /* Hover: lines extend slightly, label brightens, dot pulses */
+        .workflow-step:hover .outer-branches { opacity: 1; }
+        .workflow-step:hover .branch-line { width: 48px; background: rgba(140, 198, 63, 1); }
+        .workflow-step:hover .branch-label { color: rgba(229, 226, 225, 1); }
         .workflow-step:hover .step-dot { transform: scale(1.4); }
         .step-dot { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         /* Elegant scroll indicator - vertical line with white segment animating down */
