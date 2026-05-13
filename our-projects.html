@@ -152,6 +152,15 @@
             .gap-section-gap { gap: 48px !important; }
             /* Snap to viewport top - no margin offset (fixed header is overlay) */
             .snap-section { scroll-margin-top: 0 !important; }
+            /* Use dynamic viewport height so sections always match the
+               currently-visible area on mobile (handles address bar collapse) */
+            section.snap-section { min-height: 100vh !important; min-height: 100dvh !important; }
+            /* Closing archive section is content-heavy - compress gaps on mobile */
+            section.snap-section:last-of-type .gap-8 { gap: 16px !important; }
+            section.snap-section:last-of-type .mt-4, section.snap-section:last-of-type .mt-2 { margin-top: 4px !important; }
+            section.snap-section:last-of-type .mb-2 { margin-bottom: 4px !important; }
+            section.snap-section:last-of-type .grid-cols-3 .aspect-square { aspect-ratio: 4 / 3 !important; }
+            section.snap-section:last-of-type .px-12.py-5 { padding: 12px 24px !important; }
             /* Footer stacks tighter */
             footer { padding-top: 32px !important; padding-bottom: 32px !important; gap: 16px !important; }
         }
