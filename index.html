@@ -412,6 +412,7 @@ Inquire
             let isAnimating = false;
             let lastWheelTime = 0;
             let touchStartY = 0;
+            let touchStartX = 0;
 
             function getCurrentSectionIndex() {
                 // Pick section whose center is closest to viewport center
@@ -453,21 +454,34 @@ Inquire
             }
 
             function handleTouchStart(e) {
-                if (e.touches && e.touches.length > 0) touchStartY = e.touches[0].clientY;
+                if (e.touches && e.touches.length > 0) {
+                    touchStartY = e.touches[0].clientY;
+                    touchStartX = e.touches[0].clientX;
+                }
             }
 
             function handleTouchMove(e) {
-                if (isAnimating) { e.preventDefault(); return; }
                 if (!e.touches || e.touches.length === 0) return;
                 const dy = touchStartY - e.touches[0].clientY;
+                const dx = touchStartX - e.touches[0].clientX;
+
+                // If gesture is primarily horizontal, let it scroll natively
+                // (preserves the materials carousel swipe)
+                if (Math.abs(dx) > Math.abs(dy)) return;
+
+                // Vertical gesture: block native scroll from the very first move
+                // so the page doesn't drift before we snap
+                e.preventDefault();
+
+                if (isAnimating) return;
                 if (Math.abs(dy) < TOUCH_THRESHOLD) return;
 
                 const dir = dy > 0 ? 1 : -1;
                 const cur = getCurrentSectionIndex();
                 const next = cur + dir;
                 if (next >= 0 && next < sections.length) {
-                    e.preventDefault();
-                    touchStartY = e.touches[0].clientY; // reset to prevent multi-trigger
+                    touchStartY = e.touches[0].clientY;
+                    touchStartX = e.touches[0].clientX;
                     snapTo(next);
                 }
             }
