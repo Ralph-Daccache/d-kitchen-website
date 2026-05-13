@@ -152,14 +152,14 @@
             .gap-section-gap { gap: 48px !important; }
             /* Snap to viewport top - no margin offset (fixed header is overlay) */
             .snap-section { scroll-margin-top: 0 !important; }
-            /* Section sizing: small viewport height (svh) is stable - doesn't
-               shift mid-scroll when the address bar collapses. Padding-top
-               equals the mobile header height so content lands BELOW the
-               header rather than under it. box-sizing: border-box keeps the
-               padding inside the min-height. */
+            /* Section sizing: 100vh = largest viewport (after address bar
+               collapse). On initial load with address bar visible the
+               section slightly overflows the visible area; once you scroll
+               and the bar collapses, the section fits perfectly with no
+               gap at the bottom. Padding-top reserves room for the fixed
+               header overlay so flex-centered content lands BELOW it. */
             section.snap-section {
                 min-height: 100vh !important;
-                min-height: 100svh !important;
                 padding-top: 84px !important;
                 padding-bottom: 16px !important;
                 box-sizing: border-box !important;
@@ -196,6 +196,12 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
+<script>
+  // Always start at top on load/refresh - disable browser scroll restoration
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+  window.addEventListener('load', () => { setTimeout(() => window.scrollTo(0, 0), 0); });
+</script>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
 <!-- TopNavBar -->

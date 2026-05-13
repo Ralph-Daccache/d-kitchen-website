@@ -172,6 +172,12 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
+<script>
+  // Always start at top on load/refresh - disable browser scroll restoration
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+  window.addEventListener('load', () => { setTimeout(() => window.scrollTo(0, 0), 0); });
+</script>
 </head>
 <body class="bg-background text-on-background font-body-md text-body-md antialiased pt-32">
 <!-- TopNavBar -->
