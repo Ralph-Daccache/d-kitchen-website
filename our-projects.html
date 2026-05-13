@@ -164,6 +164,15 @@
                 padding-bottom: 16px !important;
                 box-sizing: border-box !important;
             }
+            /* Project 3 (Monolith) - 4th snap section, image is taller (3:2)
+               than P1/P2 so content overflowed and 'Explore Project' was
+               clipped on smaller phones. Compress just this one. */
+            section.snap-section:nth-of-type(4) .aspect-\[3\/2\] { aspect-ratio: 16/9 !important; }
+            section.snap-section:nth-of-type(4) .pt-8 { padding-top: 16px !important; }
+            section.snap-section:nth-of-type(4) .mb-4 { margin-bottom: 8px !important; }
+            section.snap-section:nth-of-type(4) .mb-6 { margin-bottom: 12px !important; }
+            section.snap-section:nth-of-type(4) .mt-8 { margin-top: 16px !important; }
+            section.snap-section:nth-of-type(4) .space-y-4 > * + * { margin-top: 10px !important; }
             /* Closing archive section is content-heavy - compress gaps on mobile */
             section.snap-section:last-of-type .gap-8 { gap: 12px !important; }
             section.snap-section:last-of-type .mt-4, section.snap-section:last-of-type .mt-2 { margin-top: 4px !important; }
