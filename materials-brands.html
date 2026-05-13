@@ -210,7 +210,6 @@
 <script>
   // Always start at top on load/refresh - disable browser scroll restoration
   if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-  window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
   window.addEventListener('load', () => { setTimeout(() => window.scrollTo(0, 0), 0); });
 </script>
 </head>
