@@ -119,6 +119,16 @@
         .parallax-img {
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        /* Architectural Workflow - staggered step reveals */
+        .workflow-step {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .workflow-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* Elegant scroll indicator - vertical line with white segment animating down */
         .scroll-line-track {
             width: 2px;
@@ -279,34 +289,58 @@ Inquire
 </div>
 </div>
 </section>
-<!-- About Us Section -->
-<section class="snap-section h-screen w-full bg-surface flex items-center py-section-gap relative" id="about">
-<div class="max-w-container-max mx-auto px-margin-edge w-full grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
-<div class="space-y-8 pr-12 border-l-2 border-primary-container/40 pl-8 h-full flex flex-col justify-center relative">
-<div class="absolute -left-[3px] top-1/2 -translate-y-1/2 w-[5px] h-24 bg-primary-container"></div>
-<span class="font-label-caps text-label-caps text-primary-container uppercase tracking-widest inline-flex items-center gap-3"><span class="w-8 h-[1px] bg-primary-container"></span>Heritage &amp; Vision</span>
-<h2 class="reveal font-headline-lg text-headline-lg text-on-surface">A Legacy of <span class="text-primary-container italic">Bespoke</span> Excellence</h2>
-<div class="space-y-6 text-on-surface-variant font-body-md text-body-md max-w-xl">
-<p>
-                        Led by its third generation of ownership, d. Kitchen stands as a testament to uncompromising quality and structural integrity. Our practice is rooted in formal minimalism, where every line is deliberate and nothing is superfluous.
-                    </p>
-<p>
-                        We do not merely assemble components; we engineer complete spatial environments. By bridging traditional European craftsmanship with advanced architectural methodologies, we create bespoke culinary spaces that command presence while remaining quietly sophisticated.
-                    </p>
-<p>
-                        Our commitment is absolute: to deliver environments that embody permanence, utilizing only the most rigorously selected materials to ensure a legacy that outlasts its creators.
-                    </p>
+<!-- Architectural Workflow Section -->
+<section class="snap-section h-screen w-full bg-surface flex items-center justify-center relative overflow-hidden" id="workflow">
+<div class="max-w-3xl w-full mx-auto px-margin-edge">
+<!-- Section Header -->
+<div class="text-center mb-12 md:mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.3em] block mb-3">04 &mdash; THE PROCESS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Architectural Workflow</h2>
 </div>
-<div class="pt-4">
-<a class="inline-flex items-center gap-2 border border-on-surface text-on-surface font-label-caps text-label-caps px-6 py-3 rounded-none hover:bg-on-surface hover:text-surface transition-colors duration-300" href="materials-brands.html">
-                        Explore Our Philosophy
-                        <span class="material-symbols-outlined" style="font-size: 16px;">east</span>
-</a>
+<!-- Timeline -->
+<div class="relative">
+<!-- Vertical line -->
+<div class="absolute left-1/2 top-2 bottom-2 w-[1px] bg-outline-variant/30 -translate-x-1/2"></div>
+<!-- Step 1 -->
+<div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 items-center mb-8 md:mb-10" data-step="1">
+<div class="text-right pr-4 md:pr-8">
+<span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">01</span>
+<h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Initial Consultation</h3>
+<p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed max-w-[260px] ml-auto">A deep dive into your spatial requirements and aesthetic vision.</p>
+</div>
+<div class="w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div></div>
+</div>
+<!-- Step 2 -->
+<div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 items-center mb-8 md:mb-10" data-step="2">
+<div></div>
+<div class="w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div class="text-left pl-4 md:pl-8">
+<span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">02</span>
+<h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Spatial Engineering</h3>
+<p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed max-w-[260px]">Precision CAD modeling and material specification to define the core structure.</p>
 </div>
 </div>
-<div class="relative h-[70vh] w-full hidden md:block">
-<div class="absolute inset-0 border border-outline-variant/20 m-4 z-10 pointer-events-none"></div>
-<img alt="Detailed view of bespoke kitchen craftsmanship" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9TGaJq9On8rV9_ibWyveyw4_o1K2i1X06_WDVfhCBXjtxYVbSK1o53RyYc071yLMGCQV1NJWEFN5n1_z8JlSiJrEeY5Dpd7tUlrJ_Rf6fanhBWnhoLaXRktuy1OF_EbN-2KW50hOspxGclf7wDXwZCCORLZI-yHvbFjji0BjsQwJq-f8yTo_etrQ6ZVm9wlmA7htiQPgsl5Wpw7vvJVx9yfa7NECrT4n916G3XPTtnlhzU7jx4N2UPs4DHzmqE3YQoJjpxrNho3lJ"/>
+<!-- Step 3 -->
+<div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 items-center mb-8 md:mb-10" data-step="3">
+<div class="text-right pr-4 md:pr-8">
+<span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">03</span>
+<h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Artisanal Production</h3>
+<p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed max-w-[260px] ml-auto">Master craftsmen hand-finish every component in our dedicated workshop.</p>
+</div>
+<div class="w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div></div>
+</div>
+<!-- Step 4 -->
+<div class="workflow-step relative grid grid-cols-[1fr_auto_1fr] gap-6 items-center" data-step="4">
+<div></div>
+<div class="w-[10px] h-[10px] rounded-full bg-primary relative z-10 ring-4 ring-surface"></div>
+<div class="text-left pl-4 md:pl-8">
+<span class="block font-headline-md text-3xl md:text-4xl text-primary/25 italic mb-1">04</span>
+<h3 class="font-headline-md text-xl md:text-2xl text-on-surface mb-2">Precision Assembly</h3>
+<p class="text-on-surface-variant text-sm md:text-[15px] leading-relaxed max-w-[260px]">On-site installation handled with absolute technical rigor and cleanliness.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -421,6 +455,25 @@ Inquire
                 });
             }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // ----- Workflow stagger reveal -----
+            // When the workflow section enters the viewport, each step fades up
+            // sequentially with a 600ms delay between them. Total runtime ~2.7s.
+            const workflowSection = document.getElementById('workflow');
+            if (workflowSection) {
+                const wfSteps = workflowSection.querySelectorAll('.workflow-step');
+                const wfObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            wfSteps.forEach((step, i) => {
+                                setTimeout(() => step.classList.add('visible'), 200 + i * 600);
+                            });
+                            wfObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                wfObserver.observe(workflowSection);
+            }
 
             // ----- Full-page smooth section snap (DESKTOP) -----
             // Mobile uses native CSS scroll-snap (set above in the @media block)
