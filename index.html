@@ -6,7 +6,7 @@
 <title>d. Kitchen - Precision in Every Detail</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;family=Italiana&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;family=Italiana&amp;display=swap&amp;family=Cormorant+Garamond:wght@300;400;500;600" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -190,7 +190,7 @@
         .font-body-lg, .font-body-md,
         .font-label-caps,
         h1, h2, h3, h4, h5, h6, p, a, span, button, input, label, li {
-            font-family: 'Semplicita', 'Semplicita Pro', 'Italiana', 'Cormorant Garamond', serif !important;
+            font-family: 'Riviera Nights', 'Cormorant Garamond', 'Cormorant', 'Italiana', serif !important;
         }
         /* Letter-spacing tweaks for elegance */
         .font-label-caps, .text-label-caps { letter-spacing: 0.15em; }
@@ -402,10 +402,7 @@ Inquire
             }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // ----- Full-page smooth section snap (DESKTOP ONLY) -----
-            // Skip snap on mobile - natural touch scroll feels better and prevents overflow lock
-            if (window.innerWidth < 768) return;
-
+            // ----- Full-page smooth section snap (desktop + mobile) -----
             const sections = Array.from(document.querySelectorAll('.snap-section'));
             if (sections.length === 0) return;
 
