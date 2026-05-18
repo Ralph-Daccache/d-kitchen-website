@@ -191,6 +191,17 @@
         .fork-area:hover .fork-svg { opacity: 1; transition: opacity 0.2s ease; }
         .fork-area:hover .fork-svg path { stroke-dashoffset: 0; }
         .fork-area:hover .fork-svg text { opacity: 1; }
+        /* Class-based trigger for programmatic animation (non-hover, scroll-triggered) */
+        .fork-svg.branch-show {
+            opacity: 1 !important;
+            transition: opacity 0.2s ease;
+        }
+        .fork-svg.branch-show path {
+            stroke-dashoffset: 0 !important;
+        }
+        .fork-svg.branch-show text {
+            opacity: 1 !important;
+        }
         /* Elegant scroll indicator - vertical line with white segment animating down */
         .scroll-line-track {
             width: 2px;
@@ -582,10 +593,22 @@ Inquire
             const ANIMATION_MS = 900;            // duration to lock while smooth-scroll plays
             const TOUCH_THRESHOLD = 50;          // min px swipe to trigger section change
             const WHEEL_COOLDOWN_MS = 150;       // ignore rapid consecutive wheel ticks
+            const WORKFLOW_SECTION_INDEX = 1;    // Workflow is the 2nd snap section
             let isAnimating = false;
             let lastWheelTime = 0;
             let touchStartY = 0;
             let touchStartX = 0;
+            let currentSectionIndex = 0;
+            let scrollCountInWorkflow = 0;       // Track scrolls while in workflow section
+
+            function triggerBranchingAnimation() {
+                // All branches appear simultaneously when called
+                const workflowSection = document.getElementById('workflow');
+                if (workflowSection) {
+                    const forkSVGs = workflowSection.querySelectorAll('.fork-svg');
+                    forkSVGs.forEach(svg => svg.classList.add('branch-show'));
+                }
+            }
 
             function getCurrentSectionIndex() {
                 // Pick section whose center is closest to viewport center
@@ -619,11 +642,31 @@ Inquire
 
                 const dir = e.deltaY > 0 ? 1 : -1;
                 const cur = getCurrentSectionIndex();
+
+                // Reset workflow counter if we've left the workflow section
+                if (cur !== WORKFLOW_SECTION_INDEX) {
+                    scrollCountInWorkflow = 0;
+                }
+
+                // Special handling for workflow section: block snap on 2nd scroll to show branches
+                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0) {
+                    e.preventDefault();
+                    scrollCountInWorkflow++;
+                    triggerBranchingAnimation();
+                    return;
+                }
+
+                // Normal section snapping
                 const next = cur + dir;
                 if (next >= 0 && next < sections.length) {
                     e.preventDefault();
+                    if (cur === WORKFLOW_SECTION_INDEX && dir === 1) {
+                        scrollCountInWorkflow++;
+                    }
                     snapTo(next);
                 }
+
+                currentSectionIndex = cur;
             }
 
             function handleTouchStart(e) {
@@ -651,12 +694,30 @@ Inquire
 
                 const dir = dy > 0 ? 1 : -1;
                 const cur = getCurrentSectionIndex();
+
+                // Reset workflow counter if we've left the workflow section
+                if (cur !== WORKFLOW_SECTION_INDEX) {
+                    scrollCountInWorkflow = 0;
+                }
+
+                // Special handling for workflow section: block snap on 2nd scroll to show branches
+                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0) {
+                    scrollCountInWorkflow++;
+                    triggerBranchingAnimation();
+                    return;
+                }
+
                 const next = cur + dir;
                 if (next >= 0 && next < sections.length) {
                     touchStartY = e.touches[0].clientY;
                     touchStartX = e.touches[0].clientX;
+                    if (cur === WORKFLOW_SECTION_INDEX && dir === 1) {
+                        scrollCountInWorkflow++;
+                    }
                     snapTo(next);
                 }
+
+                currentSectionIndex = cur;
             }
 
             // Keyboard support: arrow keys, page up/down, home/end
@@ -664,14 +725,35 @@ Inquire
                 if (isAnimating) return;
                 const cur = getCurrentSectionIndex();
                 let next = null;
-                if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') next = cur + 1;
-                else if (e.key === 'ArrowUp' || e.key === 'PageUp') next = cur - 1;
-                else if (e.key === 'Home') next = 0;
-                else if (e.key === 'End') next = sections.length - 1;
+                let dir = 0;
+
+                if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { next = cur + 1; dir = 1; }
+                else if (e.key === 'ArrowUp' || e.key === 'PageUp') { next = cur - 1; dir = -1; }
+                else if (e.key === 'Home') { next = 0; }
+                else if (e.key === 'End') { next = sections.length - 1; }
+
+                // Reset workflow counter if we've left the workflow section
+                if (cur !== WORKFLOW_SECTION_INDEX) {
+                    scrollCountInWorkflow = 0;
+                }
+
+                // Special handling for workflow section: block snap on 2nd scroll to show branches
+                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0) {
+                    e.preventDefault();
+                    scrollCountInWorkflow++;
+                    triggerBranchingAnimation();
+                    return;
+                }
+
                 if (next !== null && next >= 0 && next < sections.length) {
                     e.preventDefault();
+                    if (cur === WORKFLOW_SECTION_INDEX && dir === 1) {
+                        scrollCountInWorkflow++;
+                    }
                     snapTo(next);
                 }
+
+                currentSectionIndex = cur;
             }
 
             window.addEventListener('wheel', handleWheel, { passive: false });
