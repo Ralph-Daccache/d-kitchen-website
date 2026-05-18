@@ -626,6 +626,10 @@ Inquire
 
             function snapTo(index) {
                 if (index < 0 || index >= sections.length) return;
+                // Reset workflow counter if we're leaving the workflow section
+                if (index !== WORKFLOW_SECTION_INDEX) {
+                    scrollCountInWorkflow = 0;
+                }
                 isAnimating = true;
                 sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
                 setTimeout(() => { isAnimating = false; }, ANIMATION_MS);
