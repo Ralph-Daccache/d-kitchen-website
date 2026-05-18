@@ -600,6 +600,7 @@ Inquire
             let touchStartX = 0;
             let currentSectionIndex = 0;
             let scrollCountInWorkflow = 0;       // Track scrolls while in workflow section
+            let branchAnimationLocked = false;   // Prevent scroll during branch animation
 
             function triggerBranchingAnimation() {
                 // All branches appear simultaneously when called
@@ -607,6 +608,9 @@ Inquire
                 if (workflowSection) {
                     const forkSVGs = workflowSection.querySelectorAll('.fork-svg');
                     forkSVGs.forEach(svg => svg.classList.add('branch-show'));
+                    // Lock scrolling during animation (~1.5s for all animations to complete)
+                    branchAnimationLocked = true;
+                    setTimeout(() => { branchAnimationLocked = false; }, 1500);
                 }
             }
 
@@ -638,7 +642,7 @@ Inquire
             function handleWheel(e) {
                 // Allow native horizontal scroll inside snap-x galleries (e.g., Materials carousel)
                 if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-                if (isAnimating) { e.preventDefault(); return; }
+                if (isAnimating || branchAnimationLocked) { e.preventDefault(); return; }
 
                 const now = Date.now();
                 if (now - lastWheelTime < WHEEL_COOLDOWN_MS) { e.preventDefault(); return; }
@@ -693,7 +697,7 @@ Inquire
                 // so the page doesn't drift before we snap
                 e.preventDefault();
 
-                if (isAnimating) return;
+                if (isAnimating || branchAnimationLocked) return;
                 if (Math.abs(dy) < TOUCH_THRESHOLD) return;
 
                 const dir = dy > 0 ? 1 : -1;
@@ -726,7 +730,7 @@ Inquire
 
             // Keyboard support: arrow keys, page up/down, home/end
             function handleKey(e) {
-                if (isAnimating) return;
+                if (isAnimating || branchAnimationLocked) return;
                 const cur = getCurrentSectionIndex();
                 let next = null;
                 let dir = 0;
