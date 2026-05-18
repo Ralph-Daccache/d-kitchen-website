@@ -187,11 +187,7 @@
             opacity: 0;
             transition: opacity 0.45s ease 1.0s;
         }
-        /* Hover triggers the whole sequence */
-        .fork-area:hover .fork-svg { opacity: 1; transition: opacity 0.2s ease; }
-        .fork-area:hover .fork-svg path { stroke-dashoffset: 0; }
-        .fork-area:hover .fork-svg text { opacity: 1; }
-        /* Class-based trigger for programmatic animation (non-hover, scroll-triggered) */
+        /* Class-based trigger for programmatic animation (scroll-triggered) */
         .fork-svg.branch-show {
             opacity: 1 !important;
             transition: opacity 0.2s ease;
