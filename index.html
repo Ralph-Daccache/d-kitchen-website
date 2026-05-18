@@ -601,6 +601,7 @@ Inquire
             let currentSectionIndex = 0;
             let scrollCountInWorkflow = 0;       // Track scrolls while in workflow section
             let branchAnimationLocked = false;   // Prevent scroll during branch animation
+            let branchAnimationTriggered = false; // Only trigger branches once per page load
 
             function triggerBranchingAnimation() {
                 // All branches appear simultaneously when called
@@ -657,9 +658,11 @@ Inquire
                 }
 
                 // Special handling for workflow section: block snap on 2nd scroll to show branches
-                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0) {
+                // Only trigger branches once per page load
+                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0 && !branchAnimationTriggered) {
                     e.preventDefault();
                     scrollCountInWorkflow++;
+                    branchAnimationTriggered = true;
                     triggerBranchingAnimation();
                     return;
                 }
@@ -746,9 +749,11 @@ Inquire
                 }
 
                 // Special handling for workflow section: block snap on 2nd scroll to show branches
-                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0) {
+                // Only trigger branches once per page load
+                if (cur === WORKFLOW_SECTION_INDEX && dir === 1 && scrollCountInWorkflow === 0 && !branchAnimationTriggered) {
                     e.preventDefault();
                     scrollCountInWorkflow++;
+                    branchAnimationTriggered = true;
                     triggerBranchingAnimation();
                     return;
                 }
