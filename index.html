@@ -600,7 +600,6 @@ Inquire
             let touchStartX = 0;
             let currentSectionIndex = 0;
             let scrollCountInWorkflow = 0;       // Track scrolls while in workflow section
-            let branchAnimationLocked = false;   // Prevent scroll during branch animation
             let branchAnimationTriggered = false; // Only trigger branches once per page load
 
             function triggerBranchingAnimation() {
@@ -609,9 +608,6 @@ Inquire
                 if (workflowSection) {
                     const forkSVGs = workflowSection.querySelectorAll('.fork-svg');
                     forkSVGs.forEach(svg => svg.classList.add('branch-show'));
-                    // Lock scrolling during animation (~1.5s for all animations to complete)
-                    branchAnimationLocked = true;
-                    setTimeout(() => { branchAnimationLocked = false; }, 1500);
                 }
             }
 
@@ -643,7 +639,7 @@ Inquire
             function handleWheel(e) {
                 // Allow native horizontal scroll inside snap-x galleries (e.g., Materials carousel)
                 if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-                if (isAnimating || branchAnimationLocked) { e.preventDefault(); return; }
+                if (isAnimating) { e.preventDefault(); return; }
 
                 const now = Date.now();
                 if (now - lastWheelTime < WHEEL_COOLDOWN_MS) { e.preventDefault(); return; }
