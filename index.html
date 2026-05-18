@@ -159,7 +159,7 @@
         /* fork-right: fork sits to the RIGHT of the paragraph (outer side
            for paragraphs that occupy the right column - steps 2 & 4)       */
         .fork-right { left:  calc(100% + 16px); }
-        .fork-svg { width: 100%; height: 100%; overflow: visible; }
+        .fork-svg { width: 100%; height: 100%; overflow: visible; opacity: 0; }
         .fork-svg path {
             stroke: rgb(140, 198, 63);
             stroke-width: 1.3;
@@ -188,6 +188,7 @@
             transition: opacity 0.45s ease 1.0s;
         }
         /* Hover triggers the whole sequence */
+        .fork-area:hover .fork-svg { opacity: 1; transition: opacity 0.2s ease; }
         .fork-area:hover .fork-svg path { stroke-dashoffset: 0; }
         .fork-area:hover .fork-svg text { opacity: 1; }
         /* Elegant scroll indicator - vertical line with white segment animating down */
